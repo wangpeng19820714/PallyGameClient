@@ -15,45 +15,19 @@
     <type fullname="UnityEngine.InputSystem.InputBinding" preserve="all" />
     <type fullname="UnityEngine.InputSystem.InputControlScheme" preserve="all" />
     <type fullname="UnityEngine.InputSystem.InputDevice" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.Layouts.InputControlAttribute" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.OnScreen.OnScreenControl" preserve="all" />
     <type fullname="UnityEngine.InputSystem.Utilities.ReadOnlyArray`1" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
-    <type fullname="UnityEngine.Camera" preserve="all" />
-    <type fullname="UnityEngine.Component" preserve="all" />
-    <type fullname="UnityEngine.Matrix4x4" preserve="all" />
-    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
-    <type fullname="UnityEngine.Quaternion" preserve="all" />
-    <type fullname="UnityEngine.RectTransform" preserve="all" />
-    <type fullname="UnityEngine.Serialization.FormerlySerializedAsAttribute" preserve="all" />
-    <type fullname="UnityEngine.SerializeField" preserve="all" />
-    <type fullname="UnityEngine.Time" preserve="all" />
-    <type fullname="UnityEngine.Transform" preserve="all" />
-    <type fullname="UnityEngine.Vector2" preserve="all" />
-    <type fullname="UnityEngine.Vector3" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.PhysicsModule">
-    <type fullname="UnityEngine.CharacterController" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.UI">
-    <type fullname="UnityEngine.EventSystems.IDragHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IEventSystemHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IPointerDownHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.IPointerUpHandler" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.PointerEventData" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.UIModule">
-    <type fullname="UnityEngine.RectTransformUtility" preserve="all" />
   </assembly>
   <assembly fullname="mscorlib">
     <type fullname="System.Action`1" preserve="all" />
-    <type fullname="System.ArgumentNullException" preserve="all" />
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerator`1" preserve="all" />
+    <type fullname="System.Collections.Generic.List`1" preserve="all" />
+    <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
     <type fullname="System.Collections.IEnumerable" preserve="all" />
     <type fullname="System.Collections.IEnumerator" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />

@@ -6,7 +6,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public static readonly IReadOnlyList<string> PatchedAOTAssemblyList = new List<string>
 	{
 		"Unity.InputSystem.dll",
-		"UnityEngine.CoreModule.dll",
 		"mscorlib.dll",
 	};
 	// }}
@@ -16,15 +15,26 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	// {{ AOT generic types
 	// System.Action<UnityEngine.InputSystem.InputAction.CallbackContext>
+	// System.Action<object>
+	// System.Collections.Generic.ArraySortHelper<object>
+	// System.Collections.Generic.Comparer<object>
+	// System.Collections.Generic.ICollection<object>
+	// System.Collections.Generic.IComparer<object>
 	// System.Collections.Generic.IEnumerable<object>
+	// System.Collections.Generic.IEnumerator<object>
+	// System.Collections.Generic.IList<object>
+	// System.Collections.Generic.List.Enumerator<object>
+	// System.Collections.Generic.List<object>
+	// System.Collections.Generic.ObjectComparer<object>
+	// System.Collections.ObjectModel.ReadOnlyCollection<object>
+	// System.Comparison<object>
+	// System.Predicate<UnityEngine.InputSystem.InputControlScheme>
+	// System.Predicate<object>
+	// UnityEngine.InputSystem.Utilities.ReadOnlyArray.Enumerator<UnityEngine.InputSystem.InputControlScheme>
 	// UnityEngine.InputSystem.Utilities.ReadOnlyArray<UnityEngine.InputSystem.InputControlScheme>
 	// }}
 
 	public void RefMethods()
 	{
-		// object UnityEngine.Component.GetComponent<object>()
-		// object UnityEngine.Component.GetComponentInParent<object>()
-		// UnityEngine.Vector2 UnityEngine.InputSystem.InputAction.CallbackContext.ReadValue<UnityEngine.Vector2>()
-		// System.Void UnityEngine.InputSystem.OnScreen.OnScreenControl.SendValueToControl<UnityEngine.Vector2>(UnityEngine.Vector2)
 	}
 }
