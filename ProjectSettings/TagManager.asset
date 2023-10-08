@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Top
+    uniqueID: 3907576807
+    locked: 0
+  - name: Pop UI
+    uniqueID: 1200461081
+    locked: 0
+  - name: Full Screen UI
+    uniqueID: 1969432355
+    locked: 0
+  - name: BackGround
+    uniqueID: 59473207
+    locked: 0
