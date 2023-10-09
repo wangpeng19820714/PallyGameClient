@@ -34,7 +34,7 @@ namespace HybridCLR.Editor
             return s.Substring(s.IndexOf("Assets/"));
         }
 
-        [MenuItem("HybridCLR/Build/BuildAssetsAndCopyToAddressable")]
+        [MenuItem("HybridCLR/Build/BuildAssetsAndCopyToBundle")]
         public static void BuildAndCopyAOTHotUpdateDlls()
         {
             CompileDllCommand.CompileDllActiveBuildTarget();
@@ -47,8 +47,8 @@ namespace HybridCLR.Editor
         {
             var target = EditorUserBuildSettings.activeBuildTarget;
             string aotAssembliesSrcDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
-            string assetHybirdPathDst = $"{Application.dataPath}/Addressable/Hall/Hybird";
-            Directory.CreateDirectory(assetHybirdPathDst);
+            string assetBundlePathDst = $"{Application.dataPath}/Bundle";
+            Directory.CreateDirectory(assetBundlePathDst);
 
             foreach (var dll in LoadDll.AOTMetaAssemblyNames)
             {
@@ -58,7 +58,7 @@ namespace HybridCLR.Editor
                     Debug.LogError($"ab中添加AOT补充元数据dll:{srcDllPath} 时发生错误,文件不存在。裁剪后的AOT dll在BuildPlayer时才能生成，因此需要你先构建一次游戏App后再打包。");
                     continue;
                 }
-                string dllBytesPath = $"{assetHybirdPathDst}/{dll}.bytes";
+                string dllBytesPath = $"{assetBundlePathDst}/{dll}.bytes";
                 File.Copy(srcDllPath, dllBytesPath, true);
                 Debug.Log($"[CopyAOTAssembliesToAddressable] copy AOT dll {srcDllPath} -> {dllBytesPath}");
             }
@@ -70,13 +70,13 @@ namespace HybridCLR.Editor
 
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             //string hotfixAssembliesDstDir = Application.streamingAssetsPath;
-            string assetHybirdPathDst = $"{Application.dataPath}/Addressable/Hall/Hybird";
-            Directory.CreateDirectory(assetHybirdPathDst);
+            string assetBundleDst = $"{Application.dataPath}/Bundle";
+            Directory.CreateDirectory(assetBundleDst);
 
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesIncludePreserved)
             {
                 string dllPath = $"{hotfixDllSrcDir}/{dll}";
-                string dllBytesPath = $"{assetHybirdPathDst}/{dll}.bytes";
+                string dllBytesPath = $"{assetBundleDst}/{dll}.bytes";
                 File.Copy(dllPath, dllBytesPath, true);
                 Debug.Log($"[CopyHotUpdateAssembliesToAddressable] copy hotfix dll {dllPath} -> {dllBytesPath}");
             }

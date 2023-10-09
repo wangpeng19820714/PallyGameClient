@@ -4,19 +4,9 @@ using UnityEngine;
 
 namespace GameFramework
 {
-    public class GameModule : MonoBehaviour
+    public class GameModule : MonoSingleton<GameModule>
     {
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 

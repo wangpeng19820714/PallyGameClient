@@ -1,3 +1,4 @@
+using GameFramework;
 using HybridCLR;
 using System;
 using System.Collections;
@@ -6,12 +7,9 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using Wanderer.GameFramework;
 
 public class LoadDll : MonoBehaviour
 {
-
-
     public static List<string> AOTMetaAssemblyNames { get; } = new List<string>()
     {
         "mscorlib.dll",
@@ -29,14 +27,14 @@ public class LoadDll : MonoBehaviour
         LoadMetadataForAOTAssemblies();
 
 #if !UNITY_EDITOR
-        TextAsset dllBytes = GameMode.Resource.Asset.LoadAsset<TextAsset>("Assets/Addressable/Hall/Hybird/Assembly-CSharp.dll.bytes");
+        TextAsset dllBytes = ResourceManager.Instance.LoadTextAssetSync("Assets/Addressable/Hall/Hybird/Assembly-CSharp.dll.bytes");
         var gameAss = System.Reflection.Assembly.Load(dllBytes.bytes);
 #else
         var gameAss = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "Assembly-CSharp");
 #endif
 
-        var hotUpdatePrefab = GameMode.Resource.Asset.LoadAsset<GameObject>("Assets/Addressable/Hall/Prefabs/HotUpdatePrefab.prefab");
-        GameObject go = Instantiate(hotUpdatePrefab, GameMode.Self.transform);
+        var hotUpdatePrefab = ResourceManager.Instance.LoadPrefabSync("Assets/Addressable/Hall/Prefabs/HotUpdatePrefab.prefab");
+        GameObject go = hotUpdatePrefab;
     }
 
     /// <summary>
@@ -54,7 +52,7 @@ public class LoadDll : MonoBehaviour
         HomologousImageMode mode = HomologousImageMode.SuperSet;
         foreach (var aotDllName in AOTMetaAssemblyNames)
         {
-            byte[] dllBytes = GameMode.Resource.Asset.LoadAsset<TextAsset>($"Assets/Addressable/Hall/Hybird/{aotDllName}.bytes").bytes;
+            byte[] dllBytes = ResourceManager.Instance.LoadTextAssetSync($"Assets/Addressable/Hall/Hybird/{aotDllName}.bytes").bytes;
             // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
             LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
             Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
