@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using Game;
 
 namespace HybridCLR.Editor
 {
@@ -47,10 +48,10 @@ namespace HybridCLR.Editor
         {
             var target = EditorUserBuildSettings.activeBuildTarget;
             string aotAssembliesSrcDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
-            string assetBundlePathDst = $"{Application.dataPath}/Bundle";
+            string assetBundlePathDst = $"{Application.dataPath}/Bundle/Hotfix";
             Directory.CreateDirectory(assetBundlePathDst);
 
-            foreach (var dll in LoadDll.AOTMetaAssemblyNames)
+            foreach (var dll in HybridCLRLoader.AOTMetaAssemblyNames)
             {
                 string srcDllPath = $"{aotAssembliesSrcDir}/{dll}";
                 if (!File.Exists(srcDllPath))
@@ -70,7 +71,7 @@ namespace HybridCLR.Editor
 
             string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
             //string hotfixAssembliesDstDir = Application.streamingAssetsPath;
-            string assetBundleDst = $"{Application.dataPath}/Bundle";
+            string assetBundleDst = $"{Application.dataPath}/Bundle/Hotfix";
             Directory.CreateDirectory(assetBundleDst);
 
             foreach (var dll in SettingsUtil.HotUpdateAssemblyFilesIncludePreserved)

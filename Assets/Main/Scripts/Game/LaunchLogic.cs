@@ -1,3 +1,4 @@
+using Game;
 using GameFramework.Addressable;
 using System;
 using System.Collections;
@@ -15,6 +16,21 @@ namespace GameLogic
     public class LaunchLogic : MonoBehaviour
     {
         AddressableUpdater updater;
+
+        private void Awake()
+        {
+        }
+
+        void Start()
+        {
+            //启动游戏
+            StartCoroutine(InitGame());
+        }
+
+        private void OnDestroy()
+        {
+            //Destroy(m_GameStartPic);
+        }
 
         IEnumerator InitGame()
         {
@@ -65,7 +81,8 @@ namespace GameLogic
 
         public void StartGame()
         {
-
+            //启动加载器
+            HybridCLRLoader.Instance.Initialize();
         }
     }
 }

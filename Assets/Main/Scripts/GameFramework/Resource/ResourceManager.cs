@@ -5,6 +5,7 @@ using System;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
+using GameFramework.Addressable;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

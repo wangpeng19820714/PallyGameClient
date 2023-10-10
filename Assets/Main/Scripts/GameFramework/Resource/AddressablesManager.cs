@@ -50,7 +50,6 @@ namespace GameFramework.Addressable
         //cache asset
         List<UnityEngine.Object> assetsCaching = new List<UnityEngine.Object>();
         List<UnityEngine.Object> assetsCachingDontDestroy = new List<UnityEngine.Object>();
-        Dictionary<string, TextAsset> TableCaching = null;
 
         public IEnumerator Cleanup()
         {
