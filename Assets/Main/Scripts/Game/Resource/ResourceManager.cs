@@ -5,13 +5,14 @@ using System;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
-using GameFramework.Addressable;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using Game.Addressable;
+using GameFramework;
 
 
-namespace GameFramework
+namespace Game.Resource
 {
     public class ResourceManager : MonoSingleton<ResourceManager>
     {
@@ -65,9 +66,9 @@ namespace GameFramework
             m_LoadTaskList.Enqueue(task);
         }
 
-        public TextAsset LoadTextAssetSync(string assetName)
+        public TextAsset LoadTextAssetSync(string path, string assetName)
         {
-            TextAsset ta = LoadAssetSyncNotInst<TextAsset>("Tables/" + assetName + ".bytes");
+            TextAsset ta = LoadAssetSyncNotInst<TextAsset>(path + assetName + ".bytes");
             return ta;
         }
 
@@ -75,7 +76,7 @@ namespace GameFramework
         {
             GameObject g = null;
 #if UNITY_EDITOR
-            g = AssetDatabase.LoadAssetAtPath<GameObject>(string.Format("Assets/Game/Bundle/{0}", assetName));
+            g = AssetDatabase.LoadAssetAtPath<GameObject>(string.Format("Assets/Bundle/{0}", assetName));
 #else
             g = AddressablesManager.Instance.LoadAssetSync<GameObject>(assetName);
 #endif
@@ -91,7 +92,7 @@ namespace GameFramework
         {
             T go;
 #if UNITY_EDITOR
-            go = AssetDatabase.LoadAssetAtPath<T>(string.Format("Assets/Game/Bundle/{0}", assetName));
+            go = AssetDatabase.LoadAssetAtPath<T>(string.Format("Assets/Bundle/{0}", assetName));
 #else
             go = AddressablesManager.Instance.LoadAssetSync<T>(assetName);
 #endif

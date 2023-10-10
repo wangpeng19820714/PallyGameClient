@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 
-namespace GameFramework.Addressable
+namespace Game.Resource
 {
     public abstract class ResourceAsyncOperation : IEnumerator, IDisposable
     {

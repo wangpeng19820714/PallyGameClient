@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Game.Resource;
 
-namespace GameFramework.Addressable
+namespace Game.Addressable
 {
     public class AddressablesAsyncLoader : BaseAssetAsyncLoader
     {

@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
 using System;
+using GameFramework;
+using Game.Resource;
 
-namespace GameFramework.Addressable
+namespace Game.Addressable
 {
     public class AddressablesManager : MonoSingleton<AddressablesManager>
     {

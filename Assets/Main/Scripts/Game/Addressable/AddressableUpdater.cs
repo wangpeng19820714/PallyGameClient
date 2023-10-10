@@ -1,4 +1,4 @@
-using GameFramework.Addressable;
+using Game.Resource;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
-namespace GameLogic
+namespace Game.Addressable
 {
     public class AddressableUpdater : MonoBehaviour
     {

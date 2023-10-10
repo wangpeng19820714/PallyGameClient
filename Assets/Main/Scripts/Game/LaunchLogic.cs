@@ -1,5 +1,5 @@
 using Game;
-using GameFramework.Addressable;
+using Game.Resource;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Game.Addressable;
 
 namespace GameLogic
 {

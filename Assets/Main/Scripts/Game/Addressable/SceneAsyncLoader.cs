@@ -1,4 +1,4 @@
-using GameFramework.Addressable;
+using Game.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace GameFramework.Addressable
+namespace Game.Addressable
 {
     public class SceneAsyncLoader : BaseAssetAsyncLoader
     {
