@@ -40,7 +40,7 @@ public class BuildPackCommand
         Debug.Log("BuildFinish path = " + m_Settings.RemoteCatalogBuildPath.GetValue(m_Settings));
     }
 
-    [MenuItem("HybridCLR/Build Pack/Set Asset Group", priority = 3)]
+    [MenuItem("HybridCLR/Build Pack/Asset Group Settings", priority = 3)]
     public static void SetAddresablesAssets()
     {
         string settingPath = "Assets/Resources/Settings/Addressable/AssetGroupSettingData.asset";
