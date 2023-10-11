@@ -21,7 +21,7 @@ namespace HybridCLR.Editor
             }
         }
 
-        [MenuItem("HybridCLR/Build/Win64")]
+        [MenuItem("HybridCLR/Build/Win64", priority = 1)]
         public static void Build_Win64()
         {
             BuildTarget target = BuildTarget.StandaloneWindows64;
@@ -64,7 +64,7 @@ namespace HybridCLR.Editor
 #endif
         }
 
-        [MenuItem("HybridCLR/Build/Android")]
+        [MenuItem("HybridCLR/Build/Android", priority = 2)]
         public static void Build_Android()
         {
             BuildTarget target = BuildTarget.Android;

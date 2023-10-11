@@ -15,6 +15,7 @@ using System.Reflection;
 using UnityEditor.AddressableAssets.Build.Layout;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
+using UnityEditor.Graphs;
 
 public class BuildPackCommand
 {
@@ -65,6 +66,8 @@ public class BuildPackCommand
             }
             EditorUtility.SetDirty(Settings);
             AssetDatabase.Refresh();
+
+            Debug.Log($"Reset group finished, group: {data.GroupName}, asset folder: {data.FolderName}, filter: {data.Filter}, count: {assets.Length}");
         }
     }
 
