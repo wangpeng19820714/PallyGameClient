@@ -9,5 +9,7 @@ EditorBuildSettings:
     path: Assets/Main/Launcher.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: d6a82de2d08dbd540aeea9421555ce71,
+      type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 26e689a46f30d17499196b8d1587e439,
       type: 2}
