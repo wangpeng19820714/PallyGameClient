@@ -14,8 +14,6 @@ public struct AssetGroupData
 
     public string Filter;
 
-    public string AssetType;
-
     public string BuildPath;
 
     public string LoadPath;

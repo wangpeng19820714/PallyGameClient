@@ -1,10 +1,10 @@
 using HybridCLR.Editor.Commands;
-using HybridCLR.Editor.Installer;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Build;
+using UnityEditor.AddressableAssets.Settings;
 
 namespace HybridCLR.Editor
 {

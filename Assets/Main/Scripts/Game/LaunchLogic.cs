@@ -66,6 +66,13 @@ namespace GameLogic
                 DontDestroyOnLoad(EventSystemObj);
             }
 
+            //添加Reporter根节点
+            GameObject objReporter = GameObject.Find("Reporter");
+            if (objReporter != null)
+            {
+                DontDestroyOnLoad(objReporter);
+            }
+
             updater = gameObject.AddComponent<AddressableUpdater>();
 #if !UNITY_EDITOR
             // 开始更新
@@ -74,8 +81,9 @@ namespace GameLogic
                 updater.StartCheckUpdate();
             }
 #else
-            StartGame();
+
 #endif
+            StartGame();
             yield break;
         }
 

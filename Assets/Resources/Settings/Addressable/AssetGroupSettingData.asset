@@ -17,13 +17,29 @@ MonoBehaviour:
     FolderName: Bundle/Hotfix
     Label: TextAsset
     Filter: 'r:'
-    AssetType: TextAsset
     BuildPath: 
     LoadPath: 
   - GroupName: UI
     FolderName: Bundle/UI
     Label: 
     Filter: r:prefab
-    AssetType: GameObject
+    BuildPath: 
+    LoadPath: 
+  - GroupName: Atlas
+    FolderName: Bundle/Atlas
+    Label: 
+    Filter: r:spriteatlas
+    BuildPath: 
+    LoadPath: 
+  - GroupName: Scenes
+    FolderName: Bundle/Scenes
+    Label: 
+    Filter: r:unity
+    BuildPath: 
+    LoadPath: 
+  - GroupName: Prefabs
+    FolderName: Bundle/Prefabs
+    Label: 
+    Filter: r:prefab
     BuildPath: 
     LoadPath: 

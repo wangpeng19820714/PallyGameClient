@@ -11,11 +11,7 @@ using UnityEditor.AddressableAssets.Build;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using System.Reflection;
-using UnityEditor.AddressableAssets.Build.Layout;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
-using UnityEditor.Graphs;
 
 public class BuildPackCommand
 {
@@ -50,15 +46,8 @@ public class BuildPackCommand
         foreach (AssetGroupData data in AssetsGroupSetting.AssetGroupConfig)
         {
             string[] assets = GetAssets("Assets/" + data.FolderName, data.Filter);
-            switch (data.AssetType)
-            {
-                case "GameObject":
-                    group = CreateGroup(data.GroupName);
-                    break;
-                case "TextAsset":
-                    group = CreateGroup(data.GroupName);
-                    break;
-            }
+            group = CreateGroup(data.GroupName);
+
             foreach (var assetPath in assets)
             {
                 string address = assetPath;
@@ -114,12 +103,7 @@ public class BuildPackCommand
     public static string GetServerDataPath()
     {
         var path = Application.dataPath.Replace("Assets", "ServerData");
-        path = FormatFilePath(path);
-        return path;
-    }
-    public static string FormatFilePath(string filePath)
-    {
-        var path = filePath.Replace('\\', '/');
+        path = path.Replace('\\', '/');
         path = path.Replace("//", "/");
         return path;
     }
@@ -147,8 +131,8 @@ public class BuildPackCommand
         {
             bagSchema = group.AddSchema<BundledAssetGroupSchema>();
         }
-        bagSchema.BuildPath.SetVariableByName(Settings, AddressableAssetSettings.kRemoteBuildPath);
-        bagSchema.LoadPath.SetVariableByName(Settings, AddressableAssetSettings.kRemoteLoadPath);
+        bagSchema.BuildPath.SetVariableByName(Settings, AddressableAssetSettings.kLocalBuildPath);
+        bagSchema.LoadPath.SetVariableByName(Settings, AddressableAssetSettings.kLocalLoadPath);
 
          return group;
      }
@@ -200,7 +184,11 @@ public class BuildPackCommand
             string[] files = Directory.GetFiles(folderFullPath, searchPattern, SearchOption.AllDirectories);
             string[] paths = new string[files.Length];
             for (int i = 0; i < files.Length; i++)
-                paths[i] = GetAssetPath(files[i]);
+            {
+                string assetName = files[i];
+                paths[i] = assetName.Substring(assetName.IndexOf("Assets"));
+            }
+                
             return paths;
         }
         else if (filter.StartsWith("r:"))
@@ -212,10 +200,14 @@ public class BuildPackCommand
             for (int i = 0; i < files.Length; i++)
             {
                 string name = Path.GetFileName(files[i]);
-                if (Regex.IsMatch(name, pattern) && !name.EndsWith(".meta"))
+                if (name.EndsWith(".meta")) 
+                    continue;
+
+                if (Regex.IsMatch(name, pattern))
                 {
-                    string p = GetAssetPath(files[i]);
-                    list.Add(p);
+                    string assetName = files[i];
+                    assetName = assetName.Substring(assetName.IndexOf("Assets"));
+                    list.Add(assetName.Replace("\\", "/"));
                 }
             }
             return list.ToArray();
@@ -229,12 +221,5 @@ public class BuildPackCommand
     static AddressableAssetSettings Settings
     {
         get { return AddressableAssetSettingsDefaultObject.Settings; }
-    }
-
-    static string GetAssetPath(string path)
-    {
-        string root = Application.dataPath;
-        path = FormatFilePath(path);
-        return string.Format("Assets{0}", path.Replace(root, ""));
     }
 }

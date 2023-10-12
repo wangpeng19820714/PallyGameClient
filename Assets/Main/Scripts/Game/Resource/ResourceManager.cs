@@ -66,9 +66,9 @@ namespace Game.Resource
             m_LoadTaskList.Enqueue(task);
         }
 
-        public TextAsset LoadTextAssetSync(string path, string assetName)
+        public TextAsset LoadTextAssetSync(string assetName)
         {
-            TextAsset ta = LoadAssetSyncNotInst<TextAsset>(path + assetName + ".bytes");
+            TextAsset ta = LoadAssetSyncNotInst<TextAsset>(assetName + ".bytes");
             return ta;
         }
 
@@ -76,7 +76,7 @@ namespace Game.Resource
         {
             GameObject g = null;
 #if UNITY_EDITOR
-            g = AssetDatabase.LoadAssetAtPath<GameObject>(string.Format("Assets/Bundle/{0}", assetName));
+            g = AssetDatabase.LoadAssetAtPath<GameObject>(assetName);
 #else
             g = AddressablesManager.Instance.LoadAssetSync<GameObject>(assetName);
 #endif
@@ -92,7 +92,7 @@ namespace Game.Resource
         {
             T go;
 #if UNITY_EDITOR
-            go = AssetDatabase.LoadAssetAtPath<T>(string.Format("Assets/Bundle/{0}", assetName));
+            go = AssetDatabase.LoadAssetAtPath<T>(assetName);
 #else
             go = AddressablesManager.Instance.LoadAssetSync<T>(assetName);
 #endif
