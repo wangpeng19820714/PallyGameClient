@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Build;
 using UnityEditor.AddressableAssets.Settings;
+using GameFramework;
 
 namespace HybridCLR.Editor
 {
@@ -28,7 +29,7 @@ namespace HybridCLR.Editor
             BuildTarget activeTarget = EditorUserBuildSettings.activeBuildTarget;
             if (activeTarget != BuildTarget.StandaloneWindows64 && activeTarget != BuildTarget.StandaloneWindows)
             {
-                Debug.LogError("请先切到Win平台再打包");
+                Log.Error("请先切到Win平台再打包");
                 return;
             }
             // Get filename.
@@ -39,7 +40,7 @@ namespace HybridCLR.Editor
             string location = $"{outputPath}/HybridCLRTrial.exe";
 
             PrebuildCommand.GenerateAll();
-            Debug.Log("====> Build App");
+            Log.Debug("====> Build App");
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
             {
                 scenes = new string[] { "Assets/Main/Launcher.unity" },
@@ -52,11 +53,11 @@ namespace HybridCLR.Editor
             var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
             if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
             {
-                Debug.LogError("打包失败");
+                Log.Error("打包失败");
                 return;
             }
 
-            Debug.Log("====> 复制热更新资源和代码");
+            Log.Debug("====> 复制热更新资源和代码");
             BuildAssetsCommand.BuildAndCopyAOTHotUpdateDlls();
             //BashUtil.CopyDir(Application.streamingAssetsPath, $"{outputPath}/HybridCLRTrial_Data/StreamingAssets", true);
 #if UNITY_EDITOR
@@ -71,7 +72,7 @@ namespace HybridCLR.Editor
             BuildTarget activeTarget = EditorUserBuildSettings.activeBuildTarget;
             if (activeTarget != BuildTarget.Android && activeTarget != BuildTarget.Android)
             {
-                Debug.LogError("请先切到Andriod平台再打包");
+                Log.Error("请先切到Andriod平台再打包");
                 return;
             }
             // Get filename.
@@ -82,7 +83,7 @@ namespace HybridCLR.Editor
             string location = $"{outputPath}/HybridCLRTrial.apk";
 
             PrebuildCommand.GenerateAll();
-            Debug.Log("====> Build App");
+            Log.Debug("====> Build App");
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions()
             {
                 scenes = new string[] { "Assets/Main/Launcher.unity" },
@@ -95,11 +96,11 @@ namespace HybridCLR.Editor
             var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
             if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded)
             {
-                Debug.LogError("打包失败");
+                Log.Error("打包失败");
                 return;
             }
 
-            Debug.Log("====> 复制热更新资源和代码");
+            Log.Debug("====> 复制热更新资源和代码");
             BuildAssetsCommand.BuildAndCopyAOTHotUpdateDlls();
             //BashUtil.CopyDir(Application.streamingAssetsPath, $"{outputPath}/HybridCLRTrial_Data/StreamingAssets", true);
 #if UNITY_EDITOR

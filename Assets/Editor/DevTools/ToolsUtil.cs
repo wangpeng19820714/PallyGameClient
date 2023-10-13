@@ -1,4 +1,4 @@
-using System.Collections;
+using GameFramework;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -17,7 +17,7 @@ public static class ToolsUtil
                     if (System.IO.Path.GetExtension(path).ToLower().Equals(extensions[i]))
                     {
                         dirs.Add(path.Substring(path.IndexOf("Assets")));
-                        Debug.Log(path.Substring(path.IndexOf("Assets")));
+                        Log.Debug(path.Substring(path.IndexOf("Assets")));
                         break;
                     }
                 }
@@ -26,7 +26,7 @@ public static class ToolsUtil
             {
                 //²»¹ýÂËºó×º
                 dirs.Add(path.Substring(path.IndexOf("Assets")));
-                Debug.Log(path.Substring(path.IndexOf("Assets")));
+                Log.Debug(path.Substring(path.IndexOf("Assets")));
             }
         }
 

@@ -1,14 +1,11 @@
 using Game.Resource;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using GameFramework;
 
 namespace Game.Addressable
 {
@@ -92,7 +89,7 @@ namespace Game.Addressable
             }
             if (handle.Status == AsyncOperationStatus.Failed)
             {
-                Debug.LogError($"Load asset:{AddressPath} error: {handle.Status}");
+                Log.Error($"Load asset:{AddressPath} error: {handle.Status}");
                 isOver = true;
             }
         }

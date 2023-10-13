@@ -1,13 +1,9 @@
 using HybridCLR.Editor.Commands;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using Game;
+using GameFramework;
 
 namespace HybridCLR.Editor
 {
@@ -56,12 +52,12 @@ namespace HybridCLR.Editor
                 string srcDllPath = $"{aotAssembliesSrcDir}/{dll}";
                 if (!File.Exists(srcDllPath))
                 {
-                    Debug.LogError($"ab中添加AOT补充元数据dll:{srcDllPath} 时发生错误,文件不存在。裁剪后的AOT dll在BuildPlayer时才能生成，因此需要你先构建一次游戏App后再打包。");
+                    Log.Error($"ab中添加AOT补充元数据dll:{srcDllPath} 时发生错误,文件不存在。裁剪后的AOT dll在BuildPlayer时才能生成，因此需要你先构建一次游戏App后再打包。");
                     continue;
                 }
                 string dllBytesPath = $"{assetBundlePathDst}/{dll}.bytes";
                 File.Copy(srcDllPath, dllBytesPath, true);
-                Debug.Log($"[CopyAOTAssembliesToAddressable] copy AOT dll {srcDllPath} -> {dllBytesPath}");
+               Log.Error($"[CopyAOTAssembliesToAddressable] copy AOT dll {srcDllPath} -> {dllBytesPath}");
             }
         }
 
@@ -79,7 +75,7 @@ namespace HybridCLR.Editor
                 string dllPath = $"{hotfixDllSrcDir}/{dll}";
                 string dllBytesPath = $"{assetBundleDst}/{dll}.bytes";
                 File.Copy(dllPath, dllBytesPath, true);
-                Debug.Log($"[CopyHotUpdateAssembliesToAddressable] copy hotfix dll {dllPath} -> {dllBytesPath}");
+                Log.Error($"[CopyHotUpdateAssembliesToAddressable] copy hotfix dll {dllPath} -> {dllBytesPath}");
             }
         }
 

@@ -12,6 +12,7 @@ using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
+using GameFramework;
 
 public class BuildPackCommand
 {
@@ -34,7 +35,7 @@ public class BuildPackCommand
         var path = ContentUpdateScript.GetContentStateDataPath(false);
         var m_Settings = AddressableAssetSettingsDefaultObject.Settings;
         AddressablesPlayerBuildResult result = ContentUpdateScript.BuildContentUpdate(AddressableAssetSettingsDefaultObject.Settings, path);
-        Debug.Log("BuildFinish path = " + m_Settings.RemoteCatalogBuildPath.GetValue(m_Settings));
+        Log.Debug("BuildFinish path = " + m_Settings.RemoteCatalogBuildPath.GetValue(m_Settings));
     }
 
     [MenuItem("HybridCLR/Build Pack/Asset Group Settings", priority = 3)]
@@ -56,16 +57,16 @@ public class BuildPackCommand
             EditorUtility.SetDirty(Settings);
             AssetDatabase.Refresh();
 
-            Debug.Log($"Reset group finished, group: {data.GroupName}, asset folder: {data.FolderName}, filter: {data.Filter}, count: {assets.Length}");
+            Log.Debug($"Reset group finished, group: {data.GroupName}, asset folder: {data.FolderName}, filter: {data.Filter}, count: {assets.Length}");
         }
     }
 
     [MenuItem("HybridCLR/Build Pack/Print Path", priority = 4)]
     public static void PrintBuildPath()
     {
-        Debug.Log("BuildPath = " + Addressables.BuildPath);
-        Debug.Log("PlayerBuildDataPath = " + Addressables.PlayerBuildDataPath);
-        Debug.Log("RemoteCatalogBuildPath = " + AddressableAssetSettingsDefaultObject.Settings.RemoteCatalogBuildPath.GetValue(AddressableAssetSettingsDefaultObject.Settings));
+        Log.Debug("BuildPath = " + Addressables.BuildPath);
+        Log.Debug("PlayerBuildDataPath = " + Addressables.PlayerBuildDataPath);
+        Log.Debug("RemoteCatalogBuildPath = " + AddressableAssetSettingsDefaultObject.Settings.RemoteCatalogBuildPath.GetValue(AddressableAssetSettingsDefaultObject.Settings));
     }
 
     public static void ClearAllAddressBuild()
@@ -73,7 +74,7 @@ public class BuildPackCommand
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         AddressableAssetSettings.CleanPlayerContent(settings.ActivePlayerDataBuilder);
         var serverDataPath = AddressableAssetSettingsDefaultObject.Settings.RemoteCatalogBuildPath.GetValue(AddressableAssetSettingsDefaultObject.Settings);
-        Debug.Log("clear serverdata " + serverDataPath);
+        Log.Debug("clear serverdata " + serverDataPath);
         if (System.IO.Directory.Exists(serverDataPath))
         {
             System.IO.Directory.Delete(serverDataPath, true);
@@ -87,7 +88,7 @@ public class BuildPackCommand
         List<AddressableAssetEntry> entrys = ContentUpdateScript.GatherModifiedEntries(m_Settings, buildPath);
         if (entrys.Count == 0)
         {
-            Debug.Log("No updated resources");
+            Log.Debug("No updated resources");
             return;
         }
         StringBuilder sbuider = new StringBuilder();
@@ -96,7 +97,7 @@ public class BuildPackCommand
         {
             sbuider.AppendLine(entry.address);
         }
-        Debug.Log(sbuider.ToString());
+        Log.Debug(sbuider.ToString());
         var groupName = string.Format("UpdateGroup_{0}", DateTime.Now.ToString("yyyyMMddHHmmss"));
         ContentUpdateScript.CreateContentUpdateGroup(m_Settings, entrys, groupName);
     }

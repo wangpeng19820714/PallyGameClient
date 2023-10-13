@@ -1,4 +1,3 @@
-using Game.Resource;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
+using GameFramework;
 
 namespace Game.Addressable
 {
@@ -46,8 +46,8 @@ namespace Game.Addressable
             var a = Addressables.RuntimePath;
             var checkHandle = Addressables.CheckForCatalogUpdates(false);
             yield return checkHandle;
-            Debug.Log(string.Format("CheckIfNeededUpdate use {0}ms", (DateTime.Now - start).Milliseconds));
-            Debug.Log($"catalog count: {checkHandle.Result.Count} === check status: {checkHandle.Status}");
+            Log.Debug(string.Format("CheckIfNeededUpdate use {0}ms", (DateTime.Now - start).Milliseconds));
+            Log.Debug($"catalog count: {checkHandle.Result.Count} === check status: {checkHandle.Status}");
             if (checkHandle.Status == AsyncOperationStatus.Succeeded)
             {
                 List<string> catalogs = checkHandle.Result;
@@ -63,7 +63,7 @@ namespace Game.Addressable
                     yield return updateHandle;
 
                     var locators = updateHandle.Result;
-                    Debug.Log($"locator count: {locators.Count}");
+                    Log.Debug($"locator count: {locators.Count}");
 
                     foreach (var item in locators)
                     {
@@ -74,7 +74,7 @@ namespace Game.Addressable
                         yield return sizeHandle;
 
                         long size = sizeHandle.Result;
-                        Debug.Log($"download size:{size}");
+                        Log.Debug($"download size:{size}");
 
                         if (size > 0)
                         {
@@ -82,7 +82,7 @@ namespace Game.Addressable
                             while (!downloadHandle.IsDone)
                             {
                                 float percentage = downloadHandle.PercentComplete;
-                                Debug.Log($"download pregress: {percentage}");
+                                Log.Debug($"download pregress: {percentage}");
 
                                 yield return null;
                             }
@@ -90,7 +90,7 @@ namespace Game.Addressable
                         }
                     }
 
-                    Debug.Log(string.Format("UpdateFinish use {0}ms", (DateTime.Now - start).Milliseconds));
+                    Log.Debug(string.Format("UpdateFinish use {0}ms", (DateTime.Now - start).Milliseconds));
                     yield return UpdateFinish();
 
                     Addressables.Release(updateHandle);

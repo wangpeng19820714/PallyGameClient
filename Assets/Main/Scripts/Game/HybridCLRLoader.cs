@@ -38,8 +38,6 @@ namespace Game
 #else
             var gameAss = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "Game.HotFix");
 #endif
-            Debug.Log("LoadForHotFixDLL is complete!");
-
             var hotUpdatePrefab = ResourceManager.Instance.LoadPrefabSync("Assets/Bundle/Prefabs/HotUpdatePrefab.prefab");
             GameObject go = hotUpdatePrefab;
         }
@@ -62,7 +60,7 @@ namespace Game
                 byte[] dllBytes = ResourceManager.Instance.LoadTextAssetSync($"Assets/Bundle/Hotfix/{aotDllName}").bytes;
                 // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
                 LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
-                Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
+                Log.Debug($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
             }
         }
     }

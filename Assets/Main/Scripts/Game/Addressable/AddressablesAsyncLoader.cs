@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Game.Resource;
+using GameFramework;
 
 namespace Game.Addressable
 {
@@ -114,7 +115,7 @@ namespace Game.Addressable
             }
             if (handle.Status == AsyncOperationStatus.Failed)
             {
-                Debug.LogError($"Load asset:{AddressPath} error: {handle.Status}");
+                Log.Error($"Load asset:{AddressPath} error: {handle.Status}");
                 isOver = true;
             }
         }
