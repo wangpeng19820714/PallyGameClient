@@ -2,9 +2,6 @@ using HybridCLR.Editor.Commands;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Build;
-using UnityEditor.AddressableAssets.Settings;
 using GameFramework;
 
 namespace HybridCLR.Editor

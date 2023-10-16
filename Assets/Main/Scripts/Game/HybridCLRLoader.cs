@@ -1,11 +1,11 @@
-using GameFramework;
 using HybridCLR;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Game.Resource;
+using GameFramework;
+using GameFramework.Resource;
 
 
 namespace Game
