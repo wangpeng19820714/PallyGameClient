@@ -102,7 +102,6 @@ namespace HybridCLR.Editor
 
             Log.Debug("====> 复制热更新资源和代码");
             BuildAssetsCommand.BuildAndCopyAOTHotUpdateDlls();
-            //BashUtil.CopyDir(Application.streamingAssetsPath, $"{outputPath}/HybridCLRTrial_Data/StreamingAssets", true);
 #if UNITY_EDITOR
             Application.OpenURL($"file:///{location}");
 #endif

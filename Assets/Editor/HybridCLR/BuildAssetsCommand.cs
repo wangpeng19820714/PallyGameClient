@@ -57,7 +57,7 @@ namespace HybridCLR.Editor
                 }
                 string dllBytesPath = $"{assetBundlePathDst}/{dll}.bytes";
                 File.Copy(srcDllPath, dllBytesPath, true);
-               Log.Error($"[CopyAOTAssembliesToAddressable] copy AOT dll {srcDllPath} -> {dllBytesPath}");
+               Log.Debug($"[CopyAOTAssembliesToAddressable] copy AOT dll {srcDllPath} -> {dllBytesPath}");
             }
         }
 
@@ -75,7 +75,7 @@ namespace HybridCLR.Editor
                 string dllPath = $"{hotfixDllSrcDir}/{dll}";
                 string dllBytesPath = $"{assetBundleDst}/{dll}.bytes";
                 File.Copy(dllPath, dllBytesPath, true);
-                Log.Error($"[CopyHotUpdateAssembliesToAddressable] copy hotfix dll {dllPath} -> {dllBytesPath}");
+                Log.Debug($"[CopyHotUpdateAssembliesToAddressable] copy hotfix dll {dllPath} -> {dllBytesPath}");
             }
         }
 
