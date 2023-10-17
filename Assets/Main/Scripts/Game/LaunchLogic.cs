@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using GameFramework.Addressable;
 using GameFramework.Resource;
+using GameFramework.Fsm;
 
 namespace GameLogic
 {
@@ -90,6 +91,9 @@ namespace GameLogic
         {
             //启动加载器
             HybridCLRLoader.Instance.Initialize();
+
+            //启动状态机管理器
+            FsmManager.Instance.Initialize();
         }
     }
 }
