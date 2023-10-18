@@ -30,7 +30,7 @@ namespace GameFramework
         {
             if (type == null)
             {
-                throw new GameFrameworkException("Type is invalid.");
+                throw new ArgumentException("Type is invalid.");
             }
 
             m_Type = type;
@@ -67,7 +67,7 @@ namespace GameFramework
         {
             if (m_Type == null)
             {
-                throw new GameFrameworkException("Type is invalid.");
+                throw new ArgumentException("Type is invalid.");
             }
 
             string typeName = m_Type.FullName;

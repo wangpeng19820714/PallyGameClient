@@ -30,14 +30,12 @@ namespace GameFramework.Fsm
             }
         }
 
-        public float ElapseSeconds { get; set; }
-
-        public float RealElapseSeconds { get; set; }
-
         /// <summary>
         /// 有限状态机管理器轮询。
         /// </summary>
-        void Update()
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        void ManagerUpdate(float elapseSeconds, float realElapseSeconds)
         {
             m_TempFsms.Clear();
             if (m_Fsms.Count <= 0)
@@ -57,7 +55,7 @@ namespace GameFramework.Fsm
                     continue;
                 }
 
-                fsm.Update(ElapseSeconds, RealElapseSeconds);
+                fsm.Update(elapseSeconds, realElapseSeconds);
             }
         }
 

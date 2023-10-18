@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using GameFramework.Addressable;
 using GameFramework.Resource;
 using GameFramework.Fsm;
+using GameFramework.ObjectPool;
 
 namespace GameLogic
 {
@@ -94,6 +95,9 @@ namespace GameLogic
 
             //启动状态机管理器
             FsmManager.Instance.Initialize();
+
+            //启动对象池管理器
+            ObjectPoolManager.Instance.Initialize();
         }
     }
 }
