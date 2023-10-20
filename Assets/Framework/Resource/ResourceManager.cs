@@ -70,6 +70,22 @@ namespace GameFramework.Resource
             return ta;
         }
 
+        public void LoadUIPrefab(string assetName, LoadFinishFunc func, object param = null)
+        {
+            LoadAssetTask task = new LoadAssetTask();
+            task.assetType = typeof(GameObject);
+            task.assetName = "UI/UIPrefabs/" + assetName + ".prefab";
+            task.func = func;
+            task.param = param;
+            m_LoadTaskList.Enqueue(task);
+        }
+
+        public GameObject LoadUIPrefabSync(string assetName)
+        {
+            GameObject go = LoadAssetSync("UI/UIPrefabs/" + assetName + ".prefab");
+            return go;
+        }
+
         public GameObject LoadAssetSync(string assetName)
         {
             GameObject g = null;

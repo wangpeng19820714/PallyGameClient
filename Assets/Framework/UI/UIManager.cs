@@ -6,12 +6,6 @@ using GameFramework.Resource;
 
 namespace GameFramework.UI
 {
-    public enum UIName
-    {
-        UITest,
-        _None = -1,
-    }
-
     public class _UIData
     {
         public _UIData(string prefabPath, UILayer layer)
@@ -41,10 +35,10 @@ namespace GameFramework.UI
 
         private Dictionary<int, Transform> m_Layers;
         private Dictionary<int, GameObject> m_AllWindows;
-        private Dictionary<int, Transform> UIDefine;
+        private Dictionary<int, UIInfo> UIDefine;
 
         //开启新界面时来源UI，用于关闭之后，重新打开
-        UIName _OpenFromID = UIName._None;
+        int _OpenFromID = -1;
 
         //ui摄像机
         private Camera m_UICamera;
@@ -60,7 +54,7 @@ namespace GameFramework.UI
             InitLayers();
 
             m_AllWindows = new Dictionary<int, GameObject>();
-            UIDefine = new Dictionary<int, Transform>();
+            UIDefine = new Dictionary<int, UIInfo>();
         }
 
         public void CleanUp()
@@ -69,7 +63,6 @@ namespace GameFramework.UI
             CloseAllUIByLayer(UILayer.TopLayer, true, true);
             CloseAllUIByLayer(UILayer.DialogueLayer, true, true);
             CloseAllUIByLayer(UILayer.TipsLayer, true, true);
-
         }
 
         /// <summary>
@@ -161,7 +154,7 @@ namespace GameFramework.UI
             //有的话就显示出来
             if (m_AllWindows.ContainsKey(uiInfo.uiID))
             {
-                Utils.SetGameObjectActive(m_AllWindows[uiInfo.uiID], true);
+                Utility.CommonTools.SetGameObjectActive(m_AllWindows[uiInfo.uiID], true);
                 if (del != null)
                 {
                     del(param);
@@ -172,8 +165,7 @@ namespace GameFramework.UI
 #if SCREEN_H
             path = "UI_H/" + d._PrefabPath;
 #endif
-            SortingLayer. layer = SortingLayer.NameToID(uiInfo.sortingLayer);
-            UILayer layer = d._Layer;
+            UILayer layer = uiInfo.Layer;
             ResourceManager.Instance.LoadUIPrefab(path, (obj, p) =>
             {
                 GameObject go = obj as GameObject;
@@ -187,10 +179,10 @@ namespace GameFramework.UI
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localRotation = Quaternion.identity;
                 go.transform.localScale = Vector3.one;
-                Utils.SetGameObjectActive(go, true);
-                if (!m_AllWindows.ContainsKey(uiName))
+                Utility.CommonTools.SetGameObjectActive(go, true);
+                if (!m_AllWindows.ContainsKey(uiInfo.uiID))
                 {
-                    m_AllWindows.Add(uiName, go);
+                    m_AllWindows.Add(uiInfo.uiID, go);
                 }
                 if (del != null)
                 {
@@ -215,14 +207,14 @@ namespace GameFramework.UI
 #if SCREEN_H
             path = "UI_H/" + d._PrefabPath;
 #endif
-            UILayer layer = d._Layer;
+            UILayer layer = uiInfo.Layer;
             m_AllWindows.Add(uiInfo.uiID, ResourceManager.Instance.LoadUIPrefabSync(path));
             CloseUI(uiInfo.uiID);
         }
 
-        public void CloseUI(UIName uiName, bool bDestroy = false)
+        public void CloseUI(UIInfo info, bool bDestroy = false)
         {
-            CloseUI((int)uiName, bDestroy);
+            CloseUI(info.uiID, bDestroy);
         }
 
         /// <summary>
@@ -241,7 +233,7 @@ namespace GameFramework.UI
                 m_AllWindows.Remove(uiName);
                 return;
             }
-            Utils.SetGameObjectActive(m_AllWindows[uiName], false);
+            Utility.CommonTools.SetGameObjectActive(m_AllWindows[uiName], false);
         }
 
         //只关闭normal层和top
@@ -250,7 +242,7 @@ namespace GameFramework.UI
             foreach (var ui in m_AllWindows.Keys)
             {
                 var d = UIDefine[ui];
-                if (d._Layer == UILayer.NormalLayer || d._Layer == UILayer.TopLayer)
+                if (d.Layer == UILayer.NormalLayer || d.Layer == UILayer.TopLayer)
                     CloseUI(ui);
             }
         }
@@ -262,36 +254,31 @@ namespace GameFramework.UI
         /// <param name="来源UI"></param>
         /// <param name="del"></param>
         /// <param name="param"></param>
-        public void OpenUIAndStayOld(UIName uiName, UIName fromName, UILoadFinishDel del = null, object param = null)
+        public void OpenUIAndStayOld(UIInfo uiInfo, UIInfo fromUiInfo, UILoadFinishDel del = null, object param = null)
         {
             CloseAllUI();
-            _OpenFromID = fromName;
-            OpenUI((int)uiName, del, param);
+            _OpenFromID = fromUiInfo.uiID;
+            OpenUI(uiInfo, del, param);
         }
 
-        public void CloseOpenStayUI(UIName uiName, bool bDestroy = false)
+        public void CloseOpenStayUI(UIInfo fromUiInfo, bool bDestroy = false)
         {
-            if (_OpenFromID != UIName._None)
+            if (_OpenFromID != -1)
             {
-                OpenUI(_OpenFromID);
-                _OpenFromID = UIName._None;
+                var d = UIDefine[_OpenFromID];
+                OpenUI(d);
+                _OpenFromID = -1;
             }
-            CloseUI(uiName, bDestroy);
+            CloseUI(fromUiInfo, bDestroy);
         }
-
 
         public void CloseAllUIByLayer(UILayer layer, bool bDestroy = false, bool bDontAnim = false)
-        {
-            CloseAllUIByLayer((int)layer, bDestroy, bDontAnim);
-        }
-
-        public void CloseAllUIByLayer(int layer, bool bDestroy = false, bool bDontAnim = false)
         {
             List<int> closeList = new List<int>();
             foreach (var ui in m_AllWindows.Keys)
             {
-                var d = UIDefine.UIDic[ui];
-                if (d._Layer == (UILayer)layer)
+                var d = UIDefine[ui];
+                if (d.Layer == layer)
                     closeList.Add(ui);
 
             }

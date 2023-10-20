@@ -5,14 +5,14 @@ namespace GameFramework.UI
         public int uiID;
         public string uiName;
         public string uiPath;
-        public int sortingLayer;
+        public UILayer Layer;
 
-        public UIInfo(int id, string name, string path, int layer)
+        public UIInfo(int id, string name, string path, UILayer layer)
         {
             uiID = id;
             uiName = name;
             uiPath = path;
-            sortingLayer = layer;
+            Layer = layer;
         }
     }
 }
