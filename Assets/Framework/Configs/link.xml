@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
+  <assembly fullname="GameFramework">
+    <type fullname="GameFramework.UI.UIInfo" preserve="all" />
+    <type fullname="GameFramework.UI.UILayer" preserve="all" />
+  </assembly>
   <assembly fullname="System">
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
@@ -19,11 +23,13 @@
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
     <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Vector2" preserve="all" />
   </assembly>
   <assembly fullname="mscorlib">
     <type fullname="System.Action`1" preserve="all" />
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Byte" preserve="all" />
+    <type fullname="System.Collections.Generic.Dictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerator`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
@@ -32,6 +38,7 @@
     <type fullname="System.Collections.IEnumerator" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
+    <type fullname="System.Enum" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
     <type fullname="System.Nullable`1" preserve="all" />
     <type fullname="System.Object" preserve="all" />

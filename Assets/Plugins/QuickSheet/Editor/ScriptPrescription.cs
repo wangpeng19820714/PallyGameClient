@@ -21,6 +21,7 @@ namespace UnityQuickSheet
     {
         public string className               = string.Empty;
         public string spreadsheetName         = string.Empty;
+        public string worksheetName = string.Empty;
         public string worksheetClassName      = string.Empty; // used for ScriptableObject class name.
         public string dataClassName           = string.Empty;
         public string assetFileCreateFuncName = string.Empty;

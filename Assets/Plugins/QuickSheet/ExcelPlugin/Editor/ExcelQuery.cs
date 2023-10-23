@@ -107,7 +107,7 @@ namespace UnityQuickSheet
         ///     The first row of a sheet is header column which is not the actual value
         ///     so it skips when it deserializes.
         /// </summary>
-        public List<T> Deserialize<T>(int start = 1)
+        public List<T> Deserialize<T>(int start = 2)
         {
             var t = typeof(T);
             PropertyInfo[] p = t.GetProperties();
@@ -205,6 +205,49 @@ namespace UnityQuickSheet
                     {
                         // null or empty column is found. Note column index starts from 0.
                         Debug.LogWarningFormat("Null or empty column is found at {0}.The celltype of {0} is '{1}' type.\n", i, title.GetCell(i).CellType);
+                    }
+                    else
+                    {
+                        // column header is not an empty string, we check its validation later.
+                        result.Add(value);
+                    }
+                }
+
+                return result.ToArray();
+            }
+
+            error = string.Format(@"Empty row at {0}", start);
+            return null;
+        }
+
+        public string[] GetValue(int start, ref string error)
+        {
+            if (sheet == null)
+            {
+                error = @"Sheet is null";
+                return null;
+            }
+
+            List<string> result = new List<string>();
+
+            IRow v = sheet.GetRow(start);
+
+            if (v != null)
+            {
+                for (int i = 0; i < v.LastCellNum; i++)
+                {
+                    var cell = v.GetCell(i);
+                    if (cell == null)
+                    {
+                        // null or empty column is found. Note column index starts from 0.
+                        Debug.LogWarningFormat("Null or empty column is found at {0}.\n", i);
+                        continue;
+                    }
+                    string value = cell.StringCellValue;
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        // null or empty column is found. Note column index starts from 0.
+                        Debug.LogWarningFormat("Null or empty column is found at {0}.The celltype of {0} is '{1}' type.\n", i, v.GetCell(i).CellType);
                     }
                     else
                     {
