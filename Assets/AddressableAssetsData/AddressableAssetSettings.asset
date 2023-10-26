@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: ac32698bcf371234d848e9dd3a7a198f
   m_currentHash:
     serializedVersion: 2
-    Hash: eb0e0d81378a7b0af758df9904c47a53
+    Hash: 9ccfdaaeb963267048c6c9e02d1d759b
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e2321efacf02674ab7eddee5aa6c519, type: 2}
   - {fileID: 11400000, guid: f6f28396ef4f593439a838b94bf869d8, type: 2}
   - {fileID: 11400000, guid: 115012af7c3601442804ecaea50db683, type: 2}
+  - {fileID: 11400000, guid: 9cb5b8390d391034385c3eca2cd2a455, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -111,6 +112,7 @@ MonoBehaviour:
     - Atlas
     - Scenes
     - Prefabs
+    - Configs
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b7e1a5d9db423974f83c24c705cb83cc, type: 2}

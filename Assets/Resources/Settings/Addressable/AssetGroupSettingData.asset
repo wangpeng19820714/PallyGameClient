@@ -43,3 +43,9 @@ MonoBehaviour:
     Filter: r:prefab
     BuildPath: 
     LoadPath: 
+  - GroupName: Configs
+    FolderName: Bundle/Configs
+    Label: 
+    Filter: r:asset
+    BuildPath: 
+    LoadPath: 

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace Game.Hotfix.TableData
 {
     [System.Serializable]
-    public class $ClassName : ScriptableObject 
+    public class SceneData : ScriptableObject 
     {	
         [HideInInspector] [SerializeField] 
         public string SheetName = "";
@@ -21,7 +21,7 @@ namespace Game.Hotfix.TableData
         public string WorksheetName = "";
         
         // Note: initialize in OnEnable() not here.
-        public $DataClassName[] dataArray;
+        public SceneDataData[] dataArray;
         
         void OnEnable()
         {		
@@ -34,7 +34,7 @@ namespace Game.Hotfix.TableData
             //    because OnEnable is called whenever Unity builds.
             // 		
             if (dataArray == null)
-                dataArray = new $DataClassName[0];
+                dataArray = new SceneDataData[0];
 
         }
         
