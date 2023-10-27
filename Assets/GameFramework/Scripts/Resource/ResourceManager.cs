@@ -70,9 +70,11 @@ namespace GameFramework.Resource
             return ta;
         }
 
-        public ScriptableObject LoadDataAssetSync(string assetName)
+        public T LoadDataAssetSync<T>(string assetName) where T : ScriptableObject
         {
-            ScriptableObject da = LoadAssetSyncNotInst<ScriptableObject>("Assets/Bundle/Configs/" + assetName + ".asset");
+            T da;
+            var so = AddressablesManager.Instance.LoadAssetSync<System.Object>("Assets/Bundle/Configs/" + assetName + ".asset");
+            da = (T)so;
             return da;
         }
 
@@ -112,7 +114,7 @@ namespace GameFramework.Resource
         {
             T go;
 #if UNITY_EDITOR
-           go = AssetDatabase.LoadAssetAtPath<T>(assetName);
+          go = AssetDatabase.LoadAssetAtPath<T>(assetName);
 #else
             go = AddressablesManager.Instance.LoadAssetSync<T>(assetName);
 #endif

@@ -48,7 +48,6 @@ public class LaunchLogic : MonoBehaviour
         start = DateTime.Now;
         yield return AddressablesManager.Instance.Initialize();
         //Logger.Log(string.Format("AssetBundleManager Initialize use {0}ms", (DateTime.Now - start).Milliseconds));
-
         //Æô¶¯¼ÓÔØÆ÷
         yield return HybridCLRLoader.Instance.Initialize();
 
