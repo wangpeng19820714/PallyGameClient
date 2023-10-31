@@ -9,7 +9,7 @@ namespace UnityQuickSheet
 {
     public class AutoPathUtility
     {
-        public static string classPath = "Assets/Main/Scripts/Hotfix/Game/TableData";
+        public static string classPath = "Assets/Main/Hotfix/Game/TableData";
 
         public static string editorPath = "Assets/Editor/TableData";
 

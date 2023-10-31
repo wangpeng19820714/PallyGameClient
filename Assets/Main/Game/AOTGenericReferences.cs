@@ -23,6 +23,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// DelegateList<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// DelegateList<float>
 	// GameFramework.MonoSingleton<object>
+	// GameFramework.SerializableDictionary<int,object>
+	// GameFramework.SerializableDictionaryBase.Dictionary<int,object>
+	// GameFramework.SerializableDictionaryBase<int,object,object>
 	// System.Action<UnityEngine.InputSystem.InputAction.CallbackContext>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle,object>
 	// System.Action<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object>>
@@ -49,13 +52,19 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.EqualityComparer<object>
 	// System.Collections.Generic.HashSet.Enumerator<object>
 	// System.Collections.Generic.HashSet<object>
+	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,object>>
+	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ICollection<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.ICollection<object>
 	// System.Collections.Generic.IComparer<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.IComparer<object>
+	// System.Collections.Generic.IDictionary<int,object>
+	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int,object>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IEnumerable<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.IEnumerable<object>
+	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int,object>>
+	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IEnumerator<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.IEnumerator<object>
 	// System.Collections.Generic.IEqualityComparer<int>

@@ -26,7 +26,7 @@ public class SceneDataEditor : BaseExcelEditor<SceneData>
         ExcelQuery query = new ExcelQuery(path, sheet);
         if (query != null && query.IsValid())
         {
-            targetData.dataArray = query.Deserialize<SceneDataData>().ToArray();
+            targetData.dataArray = query.DeserializeDic<SceneDataData>();
             EditorUtility.SetDirty(targetData);
             AssetDatabase.SaveAssets();
             return true;

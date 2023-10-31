@@ -4,6 +4,8 @@
     <type fullname="GameFramework.Log" preserve="all" />
     <type fullname="GameFramework.MonoSingleton`1" preserve="all" />
     <type fullname="GameFramework.Resource.ResourceManager" preserve="all" />
+    <type fullname="GameFramework.SerializableDictionaryBase`3" preserve="all" />
+    <type fullname="GameFramework.SerializableDictionary`2" preserve="all" />
   </assembly>
   <assembly fullname="System">
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
@@ -44,6 +46,7 @@
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
+    <type fullname="System.Int32" preserve="all" />
     <type fullname="System.Nullable`1" preserve="all" />
     <type fullname="System.Object" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.CompilationRelaxationsAttribute" preserve="all" />

@@ -16,6 +16,10 @@ using System.ComponentModel;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using NPOI.SS.Formula.Functions;
+using Unity.VisualScripting;
+using static Codice.CM.WorkspaceServer.DataStore.IncomingChanges.StoreIncomingChanges.FileConflicts;
+using GameFramework;
 
 namespace UnityQuickSheet
 {
@@ -155,6 +159,60 @@ namespace UnityQuickSheet
             return result;
         }
 
+        public SerializableDictionary<Int32, T> DeserializeDic<T>(int start = 2)
+        {
+            var t = typeof(T);
+            PropertyInfo[] p = t.GetProperties();
+            SerializableDictionary<Int32, T> result = new SerializableDictionary<Int32, T>();
+
+            int current = 0;
+
+            foreach (IRow row in sheet)
+            {
+                Int32 id = -1;
+                if (current < start)
+                {
+                    current++; // skip header column.
+                    continue;
+                }
+
+                var item = (T)Activator.CreateInstance(t);
+                for (var i = 0; i < p.Length; i++)
+                {
+                    ICell cell = row.GetCell(i);
+
+                    if (cell == null)  // skip empty cell
+                        continue;
+
+                    var property = p[i];
+                    if (property.CanWrite)
+                    {
+                        try
+                        {
+                            var value = ConvertFrom(cell, property.PropertyType);
+                            if (i == 0)
+                            {
+                                id = System.Convert.ToInt32(value);
+                            }
+                            property.SetValue(item, value, null);
+                        }
+                        catch (Exception e)
+                        {
+                            string pos = string.Format("Row[{0}], Cell[{1}]", (current).ToString(), GetHeaderColumnName(i));
+                            Debug.LogError(string.Format("Excel File {0} Deserialize Exception: {1} at {2}", this.filepath, e.Message, pos));
+                        }
+                    }
+                }
+
+                result.Add(id, item);
+
+                current++;
+            }
+
+
+            return result;
+        }
+
         /// <summary>
         /// Retrieves all sheet names.
         /// </summary>
@@ -237,29 +295,29 @@ namespace UnityQuickSheet
                 {
                     //Get correct numeric value even the cell is string type but defined with a numeric type in a data class.
                     if (t == typeof(float))
-                        value = Convert.ToSingle(cell.StringCellValue);
+                        value = System.Convert.ToSingle(cell.StringCellValue);
                     if (t == typeof(double))
-                        value = Convert.ToDouble(cell.StringCellValue);
+                        value = System.Convert.ToDouble(cell.StringCellValue);
                     if (t == typeof(short))
-                        value = Convert.ToInt16(cell.StringCellValue);
+                        value = System.Convert.ToInt16(cell.StringCellValue);
                     if (t == typeof(int))
-                        value = Convert.ToInt32(cell.StringCellValue);
+                        value = System.Convert.ToInt32(cell.StringCellValue);
                     if (t == typeof(long))
-                        value = Convert.ToInt64(cell.StringCellValue);
+                        value = System.Convert.ToInt64(cell.StringCellValue);
                 }
                 else if (cell.CellType == NPOI.SS.UserModel.CellType.Formula)
                 {
                     // Get value even if cell is a formula
                     if (t == typeof(float))
-                        value = Convert.ToSingle(cell.NumericCellValue);
+                        value = System.Convert.ToSingle(cell.NumericCellValue);
                     if (t == typeof(double))
-                        value = Convert.ToDouble(cell.NumericCellValue);
+                        value = System.Convert.ToDouble(cell.NumericCellValue);
                     if (t == typeof(short))
-                        value = Convert.ToInt16(cell.NumericCellValue);
+                        value = System.Convert.ToInt16(cell.NumericCellValue);
                     if (t == typeof(int))
-                        value = Convert.ToInt32(cell.NumericCellValue);
+                        value = System.Convert.ToInt32(cell.NumericCellValue);
                     if (t == typeof(long))
-                        value = Convert.ToInt64(cell.NumericCellValue);
+                        value = System.Convert.ToInt64(cell.NumericCellValue);
                 }
             }
             else if (t == typeof(string) || t.IsArray)
@@ -309,7 +367,7 @@ namespace UnityQuickSheet
             }
 
             // for all other types, convert its corresponding type.
-            return Convert.ChangeType(value, t);
+            return System.Convert.ChangeType(value, t);
         }
     }
 }

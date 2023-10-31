@@ -11,7 +11,7 @@ namespace Game.Hotfix
         void Start()
         {
             SceneData sceneData =ResourceManager.Instance.LoadDataAssetSync<SceneData>("SceneData");
-            Log.Debug("Value0: {0}", sceneData.dataArray[0].Name);
+            Log.Debug("ID{0} --- Value: {1}", sceneData.dataArray[9].Id, sceneData.dataArray[9].Name);
         }
     }
 }

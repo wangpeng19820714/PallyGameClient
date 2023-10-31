@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameFramework;
 
 ///
 /// !!! Machine generated code !!!
@@ -21,7 +22,7 @@ namespace Game.Hotfix.TableData
         public string WorksheetName = "";
         
         // Note: initialize in OnEnable() not here.
-        public SceneDataData[] dataArray;
+        public SerializableDictionary<int,SceneDataData> dataArray;
         
         void OnEnable()
         {		
@@ -34,7 +35,7 @@ namespace Game.Hotfix.TableData
             //    because OnEnable is called whenever Unity builds.
             // 		
             if (dataArray == null)
-                dataArray = new SceneDataData[0];
+                dataArray = new SerializableDictionary<int, SceneDataData>();
 
         }
         

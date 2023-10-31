@@ -35,7 +35,7 @@ public class SceneDataAssetPostprocessor : AssetPostprocessor
             ExcelQuery query = new ExcelQuery(filePath, sheetName);
             if (query != null && query.IsValid())
             {
-                data.dataArray = query.Deserialize<SceneDataData>().ToArray();
+                data.dataArray = query.DeserializeDic<SceneDataData>();
                 ScriptableObject obj = AssetDatabase.LoadAssetAtPath (assetFilePath, typeof(ScriptableObject)) as ScriptableObject;
                 EditorUtility.SetDirty (obj);
             }
