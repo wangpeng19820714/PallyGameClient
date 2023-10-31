@@ -88,16 +88,18 @@ public class LaunchLogic : MonoBehaviour
             updater.StartCheckUpdate();
         }
 #else
-
-#endif
         StartGame();
+#endif
+
         yield break;
     }
 
     public void StartGame()
     {
 
-        ResourceManager.Instance.LoadPrefabSync("LoadDataExample");
+        // ResourceManager.Instance.LoadPrefabSync("LoadDataExample");
+       GameObject gameLogic =  ResourceManager.Instance.LoadPrefabSync("GameLogic");
+        DontDestroyOnLoad(gameLogic);
     }
 }
 

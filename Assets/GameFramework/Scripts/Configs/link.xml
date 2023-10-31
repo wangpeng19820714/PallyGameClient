@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
   <assembly fullname="GameFramework">
+    <type fullname="GameFramework.Data.DataManager" preserve="all" />
     <type fullname="GameFramework.Log" preserve="all" />
     <type fullname="GameFramework.MonoSingleton`1" preserve="all" />
-    <type fullname="GameFramework.Resource.ResourceManager" preserve="all" />
     <type fullname="GameFramework.SerializableDictionaryBase`3" preserve="all" />
     <type fullname="GameFramework.SerializableDictionary`2" preserve="all" />
   </assembly>

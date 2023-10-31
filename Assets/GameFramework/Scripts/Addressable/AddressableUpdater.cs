@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
-using GameFramework;
+using GameFramework.Resource;
 
 namespace GameFramework.Addressable
 {
@@ -110,9 +110,8 @@ namespace GameFramework.Addressable
         {
             statusText.text = "正在准备资源...";
 
-            //更新外后才开始启动全局游戏逻辑
-            //GameManager.instance.Init();
-            //GameManager.instance.EnterWorld();
+            GameObject gameLogic = ResourceManager.Instance.LoadPrefabSync("GameLogic");
+            DontDestroyOnLoad(gameLogic);
 
             Destroy(gameObject, 0.5f);
             yield break;

@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 550903795}
   - component: {fileID: 550903796}
   m_Layer: 0
-  m_Name: GameLogic
+  m_Name: LaunchLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -80,7 +80,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.List.Enumerator<object>
 	// System.Collections.Generic.List<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.List<object>
-	// System.Collections.Generic.ObjectComparer<UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle>
 	// System.Collections.Generic.ObjectComparer<object>
 	// System.Collections.Generic.ObjectEqualityComparer<int>
 	// System.Collections.Generic.ObjectEqualityComparer<object>
@@ -118,6 +117,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public void RefMethods()
 	{
 		// object GameFramework.Addressable.AddressablesManager.LoadAssetSync<object>(string)
+		// object GameFramework.Data.DataManager.GetDataTable<object>(string,bool)
 		// object GameFramework.Resource.ResourceManager.LoadDataAssetSync<object>(string)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.Addressables.LoadAssetAsync<object>(object)
 		// UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<object> UnityEngine.AddressableAssets.AddressablesImpl.LoadAssetAsync<object>(object)
