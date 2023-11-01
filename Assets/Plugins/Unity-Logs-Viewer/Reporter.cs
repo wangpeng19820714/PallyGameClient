@@ -21,6 +21,7 @@ using System.Collections;
 using System.Collections.Generic;
 #if UNITY_CHANGE3
 using UnityEngine.SceneManagement;
+using System.Drawing;
 #endif
 #if UNITY_CHANGE4
 using UnityEngine.Networking;
@@ -468,17 +469,19 @@ public class Reporter : MonoBehaviour
 		nonStyle.normal.background = null;
 		nonStyle.fontSize = (int)(size.y / 2);
 		nonStyle.alignment = TextAnchor.MiddleCenter;
+        nonStyle.normal.textColor = UnityEngine.Color.white;
 
-		lowerLeftFontStyle = new GUIStyle();
+        lowerLeftFontStyle = new GUIStyle();
 		lowerLeftFontStyle.clipping = TextClipping.Clip;
 		lowerLeftFontStyle.border = new RectOffset(0, 0, 0, 0);
 		lowerLeftFontStyle.normal.background = null;
 		lowerLeftFontStyle.fontSize = (int)(size.y / 2);
-		lowerLeftFontStyle.fontStyle = FontStyle.Bold;
+		lowerLeftFontStyle.fontStyle = UnityEngine.FontStyle.Bold;
 		lowerLeftFontStyle.alignment = TextAnchor.LowerLeft;
+        lowerLeftFontStyle.normal.textColor = UnityEngine.Color.white;
 
 
-		barStyle = new GUIStyle();
+        barStyle = new GUIStyle();
 		barStyle.border = new RectOffset(1, 1, 1, 1);
 		barStyle.normal.background = images.barImage;
 		barStyle.active.background = images.button_activeImage;
@@ -498,8 +501,9 @@ public class Reporter : MonoBehaviour
 		buttonActiveStyle.margin = new RectOffset(1, 1, 1, 1);
 		//buttonActiveStyle.padding = new RectOffset(4,4,4,4);
 		buttonActiveStyle.fontSize = (int)(size.y / 2);
+        buttonActiveStyle.normal.textColor = UnityEngine.Color.white;
 
-		backStyle = new GUIStyle();
+        backStyle = new GUIStyle();
 		backStyle.normal.background = images.even_logImage;
 		backStyle.clipping = TextClipping.Clip;
 		backStyle.fontSize = (int)(size.y / 2);
@@ -511,18 +515,18 @@ public class Reporter : MonoBehaviour
 		evenLogStyle.alignment = TextAnchor.UpperLeft;
 		evenLogStyle.imagePosition = ImagePosition.ImageLeft;
 		evenLogStyle.fontSize = (int)(size.y / 2);
-		//evenLogStyle.wordWrap = true;
+        //evenLogStyle.wordWrap = true;
 
-		oddLogStyle = new GUIStyle();
+        oddLogStyle = new GUIStyle();
 		oddLogStyle.normal.background = images.odd_logImage;
 		oddLogStyle.fixedHeight = size.y;
 		oddLogStyle.clipping = TextClipping.Clip;
 		oddLogStyle.alignment = TextAnchor.UpperLeft;
 		oddLogStyle.imagePosition = ImagePosition.ImageLeft;
 		oddLogStyle.fontSize = (int)(size.y / 2);
-		//oddLogStyle.wordWrap = true ;
+        //oddLogStyle.wordWrap = true ;
 
-		logButtonStyle = new GUIStyle();
+        logButtonStyle = new GUIStyle();
 		//logButtonStyle.wordWrap = true;
 		logButtonStyle.fixedHeight = size.y;
 		logButtonStyle.clipping = TextClipping.Clip;
@@ -532,12 +536,12 @@ public class Reporter : MonoBehaviour
 		logButtonStyle.fontSize = (int)(size.y / 2);
 		logButtonStyle.padding = new RectOffset(paddingX, paddingX, paddingY, paddingY);
 
-		selectedLogStyle = new GUIStyle();
+        selectedLogStyle = new GUIStyle();
 		selectedLogStyle.normal.background = images.selectedImage;
 		selectedLogStyle.fixedHeight = size.y;
 		selectedLogStyle.clipping = TextClipping.Clip;
 		selectedLogStyle.alignment = TextAnchor.UpperLeft;
-		selectedLogStyle.normal.textColor = Color.white;
+		selectedLogStyle.normal.textColor = UnityEngine.Color.white;
 		//selectedLogStyle.wordWrap = true;
 		selectedLogStyle.fontSize = (int)(size.y / 2);
 
@@ -546,7 +550,7 @@ public class Reporter : MonoBehaviour
 		selectedLogFontStyle.fixedHeight = size.y;
 		selectedLogFontStyle.clipping = TextClipping.Clip;
 		selectedLogFontStyle.alignment = TextAnchor.UpperLeft;
-		selectedLogFontStyle.normal.textColor = Color.white;
+		selectedLogFontStyle.normal.textColor = UnityEngine.Color.white;
 		//selectedLogStyle.wordWrap = true;
 		selectedLogFontStyle.fontSize = (int)(size.y / 2);
 		selectedLogFontStyle.padding = new RectOffset(paddingX, paddingX, paddingY, paddingY);
@@ -555,8 +559,9 @@ public class Reporter : MonoBehaviour
 		stackLabelStyle.wordWrap = true;
 		stackLabelStyle.fontSize = (int)(size.y / 2);
 		stackLabelStyle.padding = new RectOffset(paddingX, paddingX, paddingY, paddingY);
+        stackLabelStyle.normal.textColor = UnityEngine.Color.white;
 
-		scrollerStyle = new GUIStyle();
+        scrollerStyle = new GUIStyle();
 		scrollerStyle.normal.background = images.barImage;
 
 		searchStyle = new GUIStyle();
