@@ -30,6 +30,7 @@
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.ScriptableObject" preserve="all" />
     <type fullname="UnityEngine.SerializeField" preserve="all" />
+    <type fullname="UnityEngine.Time" preserve="all" />
     <type fullname="UnityEngine.Vector2" preserve="all" />
   </assembly>
   <assembly fullname="mscorlib">

@@ -16,6 +16,8 @@ public class LaunchLogic : MonoBehaviour
 {
     AddressableUpdater updater;
 
+    public static  int FrameRate = 60;
+
     private void Awake()
     {
     }
@@ -38,7 +40,7 @@ public class LaunchLogic : MonoBehaviour
         Application.runInBackground = true;
 
         //ห๘ึก60
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = FrameRate;
 
 #if !UNITY_EDITOR
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
