@@ -99,7 +99,7 @@ public class LaunchLogic : MonoBehaviour
     public void StartGame()
     {
 
-        // ResourceManager.Instance.LoadPrefabSync("LoadDataExample");
+       //ResourceManager.Instance.LoadPrefabSync("LoadDataExample");
        GameObject gameLogic =  ResourceManager.Instance.LoadPrefabSync("GameLogic");
         DontDestroyOnLoad(gameLogic);
     }

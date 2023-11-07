@@ -16,8 +16,8 @@ namespace UnityQuickSheet
         public static void CreateScriptableObjectClassScript(string sheetName)
         {
             ScriptPrescription sp = new ScriptPrescription();
-            sp.className = sheetName;
-            sp.dataClassName = sheetName + "Data";
+            sp.className = sheetName + "Data";
+            sp.dataClassName = sheetName + "DataClass";
             sp.template = GetTemplate("ScriptableObjectClass");
 
             string fullPath = AutoPathUtility.TargetPathForClassScript(sheetName);
@@ -56,9 +56,9 @@ namespace UnityQuickSheet
         public static void CreateScriptableObjectEditorClassScript(string sheetName)
         {
             ScriptPrescription sp = new ScriptPrescription();
-            sp.className = sheetName + "Editor";
-            sp.worksheetClassName = sheetName;
-            sp.dataClassName = sheetName + "Data";
+            sp.className = sheetName + "DataClass" +"Editor";
+            sp.worksheetClassName = sheetName + "Data";
+            sp.dataClassName = sheetName + "DataClass";
             sp.template = GetTemplate("ScriptableObjectEditorClass");
 
             // check the directory path exists
@@ -110,7 +110,7 @@ namespace UnityQuickSheet
             }
 
             ScriptPrescription sp = new ScriptPrescription();
-            sp.className = sheetName + "Data";
+            sp.className = sheetName + "DataClass";
             sp.template = GetTemplate("DataClass");
 
             sp.memberFields = fieldList.ToArray();
@@ -126,8 +126,8 @@ namespace UnityQuickSheet
         public static void CreateAssetCreationScript(string sheetName, string filePath)
         {
             ScriptPrescription sp = new ScriptPrescription();
-            sp.className = sheetName;
-            sp.dataClassName = sheetName + "Data";
+            sp.className = sheetName + "Data";
+            sp.dataClassName = sheetName + "DataClass";
             sp.worksheetClassName = sheetName;
 
             // where the imported excel file is.
@@ -135,13 +135,13 @@ namespace UnityQuickSheet
 
             // path where the .asset file will be created.
             string path = Path.GetDirectoryName(bundlePath);
-            path += "/" + sheetName + ".asset";
+            path += "/" + sheetName + "Data" + ".asset";
             sp.assetFilepath = path.Replace('\\', '/');
             sp.assetPostprocessorClass = sheetName + "AssetPostprocessor";
             sp.template = GetTemplate("PostProcessor");
 
             // write a script to the given folder.
-            using (var writer = new StreamWriter(AutoPathUtility.TargetPathForAssetPostProcessorFile(sheetName)))
+            using (var writer = new StreamWriter(AutoPathUtility.TargetPathForAssetPostProcessorFile(sp.className )))
             {
                 writer.Write(new ScriptGenerator(sp).ToString());
                 writer.Close();

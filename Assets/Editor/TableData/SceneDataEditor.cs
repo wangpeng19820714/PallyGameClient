@@ -11,7 +11,7 @@ using Game.Hotfix.TableData;
 /// !!! Machine generated code !!!
 ///
 [CustomEditor(typeof(SceneData))]
-public class SceneDataEditor : BaseExcelEditor<SceneData>
+public class SceneDataClassEditor : BaseExcelEditor<SceneData>
 {	    
     public override bool Load()
     {
@@ -26,7 +26,7 @@ public class SceneDataEditor : BaseExcelEditor<SceneData>
         ExcelQuery query = new ExcelQuery(path, sheet);
         if (query != null && query.IsValid())
         {
-            targetData.dataArray = query.DeserializeDic<SceneDataData>();
+            targetData.dataArray = query.DeserializeDic<SceneDataClass>();
             EditorUtility.SetDirty(targetData);
             AssetDatabase.SaveAssets();
             return true;

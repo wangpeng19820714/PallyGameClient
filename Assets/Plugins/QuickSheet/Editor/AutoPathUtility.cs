@@ -16,12 +16,12 @@ namespace UnityQuickSheet
         public static string tempPath = "Plugins/QuickSheet/ExcelPlugin/Templates";
         public static string TargetPathForClassScript(string worksheetName)
         {
-            return Path.Combine(classPath, worksheetName + "." + "cs");
+            return Path.Combine(classPath, worksheetName + "Data" + "." + "cs");
         }
 
         public static string TargetPathForData(string worksheetName)
         {
-            return Path.Combine(classPath, worksheetName + "Data" + "." + "cs");
+            return Path.Combine(classPath, worksheetName + "DataClass" + "." + "cs");
         }
 
         public static string TargetPathForEditorScript(string worksheetName)

@@ -8,7 +8,7 @@ using System.Collections;
 namespace Game.Hotfix.TableData
 {
 	[System.Serializable]
-	public class SceneDataData
+	public class SceneDataClass
 	{
     [SerializeField]
     int id;

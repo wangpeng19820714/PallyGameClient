@@ -22,7 +22,7 @@ namespace Game.Hotfix.TableData
         public string WorksheetName = "";
         
         // Note: initialize in OnEnable() not here.
-        public SerializableDictionary<int,SceneDataData> dataArray;
+        public SerializableDictionary<int,SceneDataClass> dataArray;
         
         void OnEnable()
         {		
@@ -35,7 +35,7 @@ namespace Game.Hotfix.TableData
             //    because OnEnable is called whenever Unity builds.
             // 		
             if (dataArray == null)
-                dataArray = new SerializableDictionary<int, SceneDataData>();
+                dataArray = new SerializableDictionary<int, SceneDataClass>();
 
         }
         

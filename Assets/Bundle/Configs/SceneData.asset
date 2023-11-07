@@ -13,40 +13,7 @@ MonoBehaviour:
   m_Name: SceneData
   m_EditorClassIdentifier: 
   SheetName: Assets/Resources/ExcelData/Scene.xlsx
-  WorksheetName: SceneData
+  WorksheetName: Scene
   dataArray:
-    m_keys: 0000000001000000020000000300000004000000050000000600000007000000080000000900000065000000
-    m_values:
-    - id: 0
-      name: Goblin
-      strength: 5
-    - id: 1
-      name: Wolf
-      strength: 5
-    - id: 2
-      name: Scavanger
-      strength: 7
-    - id: 3
-      name: Lurker
-      strength: 9
-    - id: 4
-      name: Sceleton
-      strength: 11
-    - id: 5
-      name: Ghost
-      strength: 13
-    - id: 6
-      name: Orc
-      strength: 15
-    - id: 7
-      name: Hydra
-      strength: 17
-    - id: 8
-      name: Undead
-      strength: 19
-    - id: 9
-      name: Dragon
-      strength: 21
-    - id: 101
-      name: DragonUndead
-      strength: 21
+    m_keys: 
+    m_values: []

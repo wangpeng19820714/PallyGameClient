@@ -8,11 +8,11 @@ using Game.Hotfix.TableData;
 ///
 /// !!! Machine generated code !!!
 ///
-public class SceneDataAssetPostprocessor : AssetPostprocessor 
+public class SceneAssetPostprocessor : AssetPostprocessor 
 {
     private static readonly string filePath = "Assets/Resources/ExcelData/Scene.xlsx";
     private static readonly string assetFilePath = "Assets/Bundle/Configs/SceneData.asset";
-    private static readonly string sheetName = "SceneData";
+    private static readonly string sheetName = "Scene";
     
     static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
@@ -27,7 +27,7 @@ public class SceneDataAssetPostprocessor : AssetPostprocessor
                 //data.hideFlags = HideFlags.NotEditable;
             }
             
-            //data.dataArray = new ExcelQuery(filePath, sheetName).Deserialize<SceneDataData>().ToArray();		
+            //data.dataArray = new ExcelQuery(filePath, sheetName).Deserialize<SceneDataClass>().ToArray();		
 
             //ScriptableObject obj = AssetDatabase.LoadAssetAtPath (assetFilePath, typeof(ScriptableObject)) as ScriptableObject;
             //EditorUtility.SetDirty (obj);
@@ -35,7 +35,7 @@ public class SceneDataAssetPostprocessor : AssetPostprocessor
             ExcelQuery query = new ExcelQuery(filePath, sheetName);
             if (query != null && query.IsValid())
             {
-                data.dataArray = query.DeserializeDic<SceneDataData>();
+                data.dataArray = query.DeserializeDic<SceneDataClass>();
                 ScriptableObject obj = AssetDatabase.LoadAssetAtPath (assetFilePath, typeof(ScriptableObject)) as ScriptableObject;
                 EditorUtility.SetDirty (obj);
             }

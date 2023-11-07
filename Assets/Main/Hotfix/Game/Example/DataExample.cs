@@ -8,7 +8,7 @@ namespace Game.Hotfix
     public class DataExample : MonoBehaviour
     {
         SceneData sceneData;
-        // Start is called before the first frame update
+        //Start is called before the first frame update
         void Start()
         {
             sceneData = DataManager.Instance.GetDataTable<SceneData>("SceneData");
