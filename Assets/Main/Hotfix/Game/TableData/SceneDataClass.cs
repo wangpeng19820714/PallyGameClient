@@ -19,8 +19,8 @@ namespace Game.Hotfix.TableData
     public string Name { get {return name; } set { this.name = value;} }
     
     [SerializeField]
-    int strength;
-    public int Strength { get {return strength; } set { this.strength = value;} }
+    int scenetype;
+    public int Scenetype { get {return scenetype; } set { this.scenetype = value;} }
     
 	}
 }

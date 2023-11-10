@@ -15,5 +15,14 @@ MonoBehaviour:
   SheetName: Assets/Resources/ExcelData/Scene.xlsx
   WorksheetName: Scene
   dataArray:
-    m_keys: 
-    m_values: []
+    m_keys: 010000000200000003000000
+    m_values:
+    - id: 1
+      name: "\u6D4B\u8BD5\u4E3B\u57CE\u573A\u666F"
+      scenetype: 1
+    - id: 2
+      name: "\u6D4B\u8BD5\u5173\u5361\u573A\u666F"
+      scenetype: 2
+    - id: 3
+      name: "\u6D4B\u8BD5\u6218\u6597\u573A\u666F"
+      scenetype: 3

@@ -20,6 +20,7 @@ using NPOI.SS.Formula.Functions;
 using Unity.VisualScripting;
 using static Codice.CM.WorkspaceServer.DataStore.IncomingChanges.StoreIncomingChanges.FileConflicts;
 using GameFramework;
+using System.Text.RegularExpressions;
 
 namespace UnityQuickSheet
 {
@@ -301,7 +302,15 @@ namespace UnityQuickSheet
                     if (t == typeof(short))
                         value = System.Convert.ToInt16(cell.StringCellValue);
                     if (t == typeof(int))
-                        value = System.Convert.ToInt32(cell.StringCellValue);
+                    {
+                        if (cell.StringCellValue.Contains("|*|"))
+                        {
+                            string[] v = cell.StringCellValue.Split(new char[] {'|', '*', '|' });
+                            value = System.Convert.ToInt32(v[0]);
+                        }
+                        else
+                            value = System.Convert.ToInt32(cell.StringCellValue);
+                    }
                     if (t == typeof(long))
                         value = System.Convert.ToInt64(cell.StringCellValue);
                 }
